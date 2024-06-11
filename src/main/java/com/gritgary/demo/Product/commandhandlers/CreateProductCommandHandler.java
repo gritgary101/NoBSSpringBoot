@@ -29,15 +29,15 @@ public class CreateProductCommandHandler implements Command<Product, ResponseEnt
         }
 
         if (StringUtils.isBlank(product.getDescription())){
-            throw new RuntimeException("Description cannot be empty.");
+            throw new ProductNotValidException("Description cannot be empty.");
         }
 
         if(product.getPrice() <= 0.0){
-            throw new RuntimeException("Price cannot be negative");
+            throw new ProductNotValidException("Price cannot be negative");
         }
 
         if (product.getQuantity() <= 0){
-            throw new RuntimeException("Quantity cannot be negative");
+            throw new ProductNotValidException("Quantity cannot be negative");
         }
     }
 }
