@@ -59,4 +59,9 @@ public class ProductController {
     public ResponseEntity deleteProduct(@PathVariable Integer id) {
         return deleteProductCommandHandler.execute(id);
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Product>> searchProducts(@RequestParam(value = "description") String description){
+        return ResponseEntity.ok(productRepository.findByDescriptionContaining(description));
+    }
 }
